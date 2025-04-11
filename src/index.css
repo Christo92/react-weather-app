@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Futura_Book";
+  src: url("./fonts/futura_book.ttf") format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Futura_Book", sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  display: grid;
+  background: #e2d4ff;
+}
