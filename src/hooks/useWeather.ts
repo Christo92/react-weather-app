@@ -68,29 +68,38 @@ interface OpenWeatherForecastAPIResponse {
 const fetchWeather = async (city: string): Promise<WeatherData> => {
   const lang = getBrowserLang();
 
-  const [currentRes, forecastRes] = await Promise.all([
-    axios.get<OpenWeatherCurrentAPIResponse>(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=${lang}`
-    ),
-    axios.get<OpenWeatherForecastAPIResponse>(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=${lang}`
-    ),
-  ]);
+  try {
+    const [currentRes, forecastRes] = await Promise.all([
+      axios.get<OpenWeatherCurrentAPIResponse>(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=${lang}`
+      ),
+      axios.get<OpenWeatherForecastAPIResponse>(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=${lang}`
+      ),
+    ]);
 
-  const currentData = currentRes.data;
-  const forecastData = forecastRes.data;
+    const currentData = currentRes.data;
+    const forecastData = forecastRes.data;
 
-  return {
-    current: {
-      icon: currentData.weather[0].icon,
-      temp: Math.round(currentData.main.temp),
-      city: currentData.name,
-      humidity: currentData.main.humidity,
-      wind: currentData.wind.speed,
-    },
-    daily: extractDailyForecast(forecastData.list),
-  };
+    return {
+      current: {
+        icon: currentData.weather[0].icon,
+        temp: Math.round(currentData.main.temp),
+        city: currentData.name,
+        humidity: currentData.main.humidity,
+        wind: currentData.wind.speed,
+      },
+      daily: extractDailyForecast(forecastData.list),
+    };
+  } catch (error: any) {
+    // Affiche un message d'erreur plus clair
+    if (error.response?.status === 404) {
+      throw new Error("Ville introuvable. Vérifiez l'orthographe.");
+    }
+    throw new Error("Erreur lors de la récupération de la météo.");
+  }
 };
+
 
 /**
  * Extracts one average daily forecast for the next 5 days from the forecast list.

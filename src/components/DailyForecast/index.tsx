@@ -53,11 +53,11 @@ interface DailyForecastProps {
  */
 const DailyForecast: React.FC<DailyForecastProps> = ({ data = [] }) => {
   return (
-    <div className={`forecast-container ${data[0]?.temp < 0 ? 'dark' : ''}`}>
-      <h3>5-Day Forecast</h3>
+    <div className="forecast-container">
+      <h3 className="forecast-title">Prévisions sur 5 jours</h3>
       <div className="forecast-grid">
         {data.map((day, index) => (
-          <div key={index} className={`forecast-day ${day.temp < 0 ? 'dark' : ''}`}>
+          <div key={index} className="forecast-day">
             <p>{day.date}</p>
             <img src={allIcons[day.icon] || clearIcon} alt="weather icon" />
             <p className="temp">{day.temp}°C</p>
