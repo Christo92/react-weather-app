@@ -1,0 +1,20 @@
+/* Styles pour le composant WeatherDetails */
+
+.weather-details-container {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 24px;
+  color: white;
+}
+
+.weather-detail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  width: 24px;
+  height: auto;
+}

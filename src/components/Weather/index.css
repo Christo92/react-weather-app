@@ -1,101 +1,58 @@
-.weather {
-  place-self: center;
-  padding: 40px;
-  border-radius: 10px;
-  background-image: linear-gradient(45deg, #2f4680, #500ae4);
+/* Styles pour le composant Weather */
+
+.weather-container {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 400px;
-  margin: 0 auto;
-  width: 100%;
+  justify-content: flex-start;
+  padding: 40px 16px;
+  background: linear-gradient(to bottom right, #3b82f6, #6366f1);
+  transition: background-color 0.5s ease;
 }
 
-.weather__search-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  margin-bottom: 20px;
+.weather-container.dark {
+  background: linear-gradient(to bottom right, #1f2937, #374151);
 }
 
-.weather__input {
-  flex: 1;
-  height: 50px;
-  border: none;
-  outline: none;
-  border-radius: 40px;
-  padding-left: 25px;
-  color: #626262;
-  background: #EBFFFC;
-  font-size: 18px;
-}
-
-.weather__search-icon {
-  width: 50px;
-  padding: 15px;
+.dark-mode-toggle {
+  padding: 8px 10px;
   border-radius: 50%;
-  background: #EBFFFC;
+  background-color: #e5e7eb;
+  color: #1f2937;
+  margin-bottom: 16px;
+  border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.weather__icon {
-  width: 150px;
-  margin: 30px 0;
+.dark-mode-toggle:hover {
+  background-color: #d1d5db;
 }
 
-.weather__temperature {
-  color: #FFF;
-  font-size: 80px;
-  line-height: 1;
+.dark-mode-toggle.dark {
+  background-color: #374151;
+  color: white;
 }
 
-.weather__location {
-  color: #FFF;
-  font-size: 40px;
-}
-
-.weather__details {
-  width: 100%;
+.loading-text {
+  color: white;
+  font-size: 20px;
   margin-top: 40px;
-  color: #FFF;
-  display: flex;
-  justify-content: space-between;
 }
 
-.weather__col {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  font-size: 22px;
+.error-text {
+  color: #f87171;
+  margin-top: 40px;
 }
 
-.weather__col span {
-  display: block;
-  font-size: 16px;
+.weather-content {
+  width: 100%;
+  max-width: 960px;
 }
 
-.weather__detail-icon {
-  width: 26px;
-  margin-top: 10px;
-}
-
-@media (max-width: 480px) {
-  .weather {
+@media (max-width: 640px) {
+  .weather-container {
     padding: 20px;
   }
-
-  .weather__temperature {
-    font-size: 60px;
-  }
-
-  .weather__location {
-    font-size: 30px;
-  }
-
-  .weather__details {
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-  }
-} 
+}

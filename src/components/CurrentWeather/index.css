@@ -1,0 +1,44 @@
+/* Main container */
+.weather-container {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.weather-container.dark {
+  background-color: #2d2d2d;
+}
+
+/* Title */
+.weather-title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Location (city) */
+.weather-location {
+  font-size: 1rem;
+  color: #4a4a4a;
+}
+
+/* Weather icon */
+.weather-icon {
+  width: 5rem;
+  height: 5rem;
+  margin-bottom: 1rem;
+}
+
+/* Weather details (humidity and wind speed) */
+.weather-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.weather-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

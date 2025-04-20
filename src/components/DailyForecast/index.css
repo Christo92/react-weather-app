@@ -1,0 +1,65 @@
+/* Main container */
+.forecast-container {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.forecast-container.dark {
+  background-color: #2d2d2d;
+}
+
+/* Title */
+.forecast-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Forecast grid */
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .forecast-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .forecast-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Day forecast card */
+.forecast-day {
+  background-color: #f7fafc;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.forecast-day.dark {
+  background-color: #4a5568;
+}
+
+.forecast-day p {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.forecast-day img {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.forecast-day .temp {
+  font-size: 1rem;
+}
