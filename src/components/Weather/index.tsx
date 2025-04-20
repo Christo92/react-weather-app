@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useWeather } from "../../hooks/useWeather";
 import WeatherInfo from "../../components/WeatherInfo";
 import DailyForecast from "../../components/DailyForecast";
