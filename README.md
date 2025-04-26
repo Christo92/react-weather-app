@@ -3,6 +3,7 @@
 A responsive weather forecast application built with **React**, **TypeScript**, and **Framer Motion**.
 It displays the current weather, a 5-day forecast, and supports light/dark mode. The app fetches weather data from the [OpenWeatherMap API](https://openweathermap.org/api).
 
+Url: https://weatherviteapp.netlify.app/
 ---
 
 ## ✨ Features
