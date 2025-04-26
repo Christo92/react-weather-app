@@ -1,63 +1,53 @@
-import "@testing-library/jest-dom";
-// Import utilities from React Testing Library
-import { render, screen, act } from "@testing-library/react";
-// Import MemoryRouter to simulate routing context
-import { MemoryRouter } from "react-router-dom";
-// Import the component under test
-import SplashScreen from "../SplashScreen";
+import "@testing-library/jest-dom"; // Extend Jest matchers
+import { render, screen, act } from "@testing-library/react"; // Render component and interact with it
+import { MemoryRouter } from "react-router-dom"; // Simulate routing context
+import SplashScreen from "../SplashScreen"; // The component under test
 
-// ---
-// MOCKS
-
-// Create a mock function to track navigation calls
+// Mock the `useNavigate` hook from `react-router-dom` to track navigation calls
 const mockNavigate = jest.fn();
-
-// Mock react-router-dom to override only the useNavigate hook
 jest.mock("react-router-dom", () => ({
-  // Keep all the real exports except useNavigate
-  ...jest.requireActual("react-router-dom"),
-  useNavigate: () => mockNavigate,
+  ...jest.requireActual("react-router-dom"), // Keep actual exports
+  useNavigate: () => mockNavigate, // Mock the `useNavigate` function
 }));
 
-// Use fake timers to control setTimeout in tests
+// Use fake timers for controlling the passage of time in tests
 jest.useFakeTimers();
 
-// ---
-// TEST SUITE
-
+// Test suite for the `SplashScreen` component
 describe("SplashScreen", () => {
-  // Reset all mock calls before each test to avoid cross-test pollution
+  // Reset all mocks before each test to ensure no test pollution
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
+  // Test to check if the title and sun icon are rendered correctly
   it("renders the Weather title and sun icon", () => {
-    // Render SplashScreen inside a router context
     render(
       <MemoryRouter>
         <SplashScreen />
       </MemoryRouter>
     );
 
-    // Assert that the title and sun icon are present
+    // Check if the "Weather" title is present
     expect(screen.getByText("Weather")).toBeInTheDocument();
+    // Check if the sun icon is present
     expect(screen.getByAltText("Sun")).toBeInTheDocument();
   });
 
+  // Test to check if the navigation happens after 2 seconds
   it("navigates after 2 seconds", () => {
-    // Render SplashScreen inside a router context
     render(
       <MemoryRouter>
         <SplashScreen />
       </MemoryRouter>
     );
 
-    // Fast-forward time by 2000ms to trigger the navigation
+    // Advance the timers by 2000ms (2 seconds) to simulate time passing
     act(() => {
       jest.advanceTimersByTime(2000);
     });
 
-    // Assert that navigate was called with the correct path
+    // Assert that the navigate function was called with the correct path
     expect(mockNavigate).toHaveBeenCalledWith("/weather");
   });
 });

@@ -64,7 +64,7 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = ({ data }) => {
   const icon = allIcons[data.icon] || clearIcon;
 
   return (
-    <div className={`weather-container ${data.temp < 0 ? 'dark' : ''}`}>
+    <div className={`weather-container ${data.temp < 0 ? 'dark' : ''}`} data-testid="weather-container">
       <div className="weather-info">
         <img src={icon} alt="weather" />
         <h2>{data.temp}°C</h2>
